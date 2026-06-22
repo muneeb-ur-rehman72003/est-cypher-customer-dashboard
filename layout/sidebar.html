@@ -1,0 +1,155 @@
+<section class="sidebar-wrap">
+  <div class="sidebar-main">
+    <div class="sidebar-profile-link-main">
+      <div class="sidebar-profile">
+        <div class="sidebar-profile-img">
+          <a href="javascript:void(0)"
+            ><img src="images/user1.jpg" alt="img"
+          /></a>
+        </div>
+
+        <div class="sidebar-profile-txt">
+          <a href="javascript:void(0)"><h5>willium jhon</h5></a>
+          <a href="javascript:void(0)"><h6>user</h6></a>
+        </div>
+      </div>
+
+      <div class="sidebar-link-box">
+        <div class="sidebar-link-main">
+          <ul id="menu">
+            <li>
+              <div class="sidebar-link">
+                <a href="index.html">
+                  <div class="sidebar-link-img">
+                    <img src="images/sidebar1.png" alt="img" />
+                  </div>
+                  <div class="sidebar-link-txt">
+                    <h5>Dashboard</h5>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="sidebar-link">
+                <a href="discover.html">
+                  <div class="sidebar-link-img">
+                    <img src="images/sidebar2.png" alt="img" />
+                  </div>
+                  <div class="sidebar-link-txt">
+                    <h5>Discover</h5>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="sidebar-link">
+                <a href="library.html">
+                  <div class="sidebar-link-img">
+                    <img src="images/sidebar3.png" alt="img" />
+                  </div>
+                  <div class="sidebar-link-txt">
+                    <h5>Library</h5>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="sidebar-link">
+                <a href="producers.html">
+                  <div class="sidebar-link-img">
+                    <img src="images/sidebar4.png" alt="img" />
+                  </div>
+                  <div class="sidebar-link-txt">
+                    <h5>Producers</h5>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="sidebar-link">
+                <a href="liked-songs.html">
+                  <div class="sidebar-link-img">
+                    <img src="images/sidebar5.png" alt="img" />
+                  </div>
+                  <div class="sidebar-link-txt">
+                    <h5>Liked Songs</h5>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div class="sidebar-link">
+                <a href="settings.html">
+                  <div class="sidebar-link-img">
+                    <img src="images/sidebar6.png" alt="img" />
+                  </div>
+                  <div class="sidebar-link-txt">
+                    <h5>settings</h5>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-btn-box">
+      <div class="sidebar-btn-main">
+        <div class="sidebar-btn">
+          <a href="support.html" class="theme2">
+            <span class="theme2-img"
+              ><img src="images/support.png" alt=""
+            /></span>
+            <span class="theme2-txt">support</span>
+          </a>
+        </div>
+        <div class="sidebar-btn">
+          <a href="#" class="theme3">
+            <span class="theme3-txt">Log out</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Sidebar Active Starts
+  $(window).on("load", function () {
+    // get current URL without query/hash, lowercase
+    var currentUrl = window.location.href
+      .split("#")[0]
+      .split("?")[0]
+      .toLowerCase();
+
+    var $links = $("#menu .sidebar-link a");
+    var activeFound = false;
+
+    $links.each(function () {
+      // each link absolute href for comparison
+      var linkUrl = this.href.split("#")[0].split("?")[0].toLowerCase();
+
+      if (currentUrl.indexOf(linkUrl) !== -1) {
+        // clear any previous active states
+        $links.removeClass("active");
+        $("#menu .sidebar-link").removeClass("active");
+
+        // set active on this link + its wrapper
+        $(this).addClass("active");
+        $(this).closest(".sidebar-link").addClass("active");
+
+        activeFound = true;
+        return false; // break .each loop
+      }
+    });
+
+    // fallback: if nothing matched, mark the first menu item active
+    if (!activeFound) {
+      var $first = $links.first();
+      $first.addClass("active");
+      $first.closest(".sidebar-link").addClass("active");
+    }
+  });
+  // Sidebar Active Ends
+</script>
